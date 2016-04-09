@@ -9,43 +9,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="se.example.android.note2.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="35dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 
     <EditText
         android:id="@+id/editTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/textView1"
-        android:ems="10"/>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView1"
-        android:layout_alignLeft="@id/textView1"
+        android:ems="10"
         android:layout_below="@+id/addButton"
-        android:choiceMode="singleChoice"
-        android:layout_marginTop="20dp">
-    </ListView>
+        android:layout_alignRight="@+id/deleteButton"
+        android:layout_alignEnd="@+id/deleteButton"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="20dp"/>
+
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="addButtonClicked"
-        android:layout_alignLeft="@id/listView1"
-        android:layout_below="@id/editTxt"
-        android:layout_marginTop="19dp"
-        android:text="Add"/>
+        android:text="Add"
+        android:layout_alignTop="@+id/deleteButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/updateButton"
@@ -53,8 +39,8 @@
         android:layout_height="wrap_content"
         android:text="Update"
         android:layout_alignTop="@+id/deleteButton"
-        android:layout_alignLeft="@+id/editTxt"
-        android:layout_alignStart="@+id/editTxt" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
     <Button
@@ -63,9 +49,19 @@
         android:onClick="deleteButtonClicked"
         android:layout_height="wrap_content"
         android:text="Delete"
-        android:layout_above="@+id/listView1"
-        android:layout_alignRight="@+id/listView1"
-        android:layout_alignEnd="@+id/listView1" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView1"
+        android:choiceMode="singleChoice"
+        android:layout_below="@+id/editTxt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingTop="16dp">
+    </ListView>
 
 </RelativeLayout>

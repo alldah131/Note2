@@ -17,7 +17,8 @@ public class MainActivity extends Activity {
 
     ListView listView;
     EditText editText;
-    TextView textView;
+    CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), databaseList());
+
 
     Button add;
     Button update;
@@ -37,16 +38,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         listView = (ListView) findViewById(R.id.listView1);
-        textView = (TextView) findViewById(R.id.textView1);
         editText = (EditText) findViewById(R.id.editTxt);
         add = (Button) findViewById(R.id.addButton);
         update = (Button) findViewById(R.id.updateButton);
         delete = (Button) findViewById(R.id.deleteButton);
         dbHandler = new MyDBHandler(this, null, null, 1);
-        printDataBase();
+        customAdapter.printDataBase();
 
         // Adapter
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, names);
+        adapter = new CustomAdapter(this, R.layout.custom_layout, customAdapter.textView);
         listView.setAdapter(adapter);
 
         //Set selected item
@@ -140,19 +140,14 @@ public class MainActivity extends Activity {
         public void addButtonClicked(View view){
             Products products = new Products(editText.getText().toString());
             dbHandler.addProduct(products);
-            printDataBase();
+            customAdapter.printDataBase();
         }
 
         public void deleteButtonClicked(View view){
             String inputText = editText.getText().toString();
             dbHandler.deleteProduct(inputText);
-            printDataBase();
+            customAdapter.printDataBase();
         }
 
-        public void printDataBase() {
-            String dbString = dbHandler.databaseToString();
-            textView.setText(dbString);
-            editText.setText("");
 
-        }
 }
