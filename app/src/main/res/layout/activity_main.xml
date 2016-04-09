@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="se.example.android.note2.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="35dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
+    <EditText
+        android:id="@+id/editTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/textView1"
+        android:ems="10"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView1"
+        android:layout_alignLeft="@id/textView1"
+        android:layout_below="@+id/addButton"
+        android:choiceMode="singleChoice"
+        android:layout_marginTop="20dp">
+    </ListView>
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addButtonClicked"
+        android:layout_alignLeft="@id/listView1"
+        android:layout_below="@id/editTxt"
+        android:layout_marginTop="19dp"
+        android:text="Add"/>
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:layout_alignTop="@+id/deleteButton"
+        android:layout_alignLeft="@+id/editTxt"
+        android:layout_alignStart="@+id/editTxt" />
+
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:onClick="deleteButtonClicked"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_above="@+id/listView1"
+        android:layout_alignRight="@+id/listView1"
+        android:layout_alignEnd="@+id/listView1" />
+
+
+</RelativeLayout>
