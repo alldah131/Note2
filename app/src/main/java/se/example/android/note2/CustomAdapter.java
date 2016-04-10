@@ -8,15 +8,15 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class CustomAdapter extends ArrayAdapter<String> {
 
 
-    TextView textView;
-    RadioButton radioButton;
     MainActivity main = new MainActivity();
 
-    public CustomAdapter(Context context, String[] items) {
+    public CustomAdapter(Context context, ArrayList<String> items) {
             super(context, R.layout.custom_layout, items);
         }
 
@@ -24,21 +24,23 @@ public class CustomAdapter extends ArrayAdapter<String> {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            View customView = inflater.inflate(R.layout.custom_layout, parent, false);
-
             String singleItem = getItem(position);
+            if(convertView == null){
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_layout, parent,false);
 
-            textView = (TextView) customView.findViewById(R.id.textView1);
-            radioButton = (RadioButton) customView.findViewById(R.id.radioButton);
+            }
 
-            printDataBase();
-            return customView;
+            String dbString = main.dbHandler.databaseToString();
+            main.textView.setText(dbString);
+            main.editText.setText("");
+
+            return convertView;
 
         }
 
     public void printDataBase() {
         String dbString = main.dbHandler.databaseToString();
-        textView.setText(dbString);
+        main.textView.setText(dbString);
         main.editText.setText("");
     }
 }
